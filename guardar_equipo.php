@@ -1,17 +1,12 @@
 <?php
-// Configuración de la conexión a la base de datos
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "croydon_equipos";
-
-// Crear conexión
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Verificar conexión
-if ($conn->connect_error) {
-    die("Error de conexión: " . $conn->connect_error);
+session_start();
+if (!isset($_SESSION['username'])) {
+    header("Location: login.html");
+    exit();
 }
+
+// Incluir archivo de conexión
+require_once 'conection.php';
 
 // Obtener datos del formulario
 $placa = $_POST['placa'];
@@ -20,19 +15,19 @@ $quien_recoge_equipo = $_POST['quien_recoge_equipo'];
 $fecha_llegada = $_POST['fecha_llegada'];
 $fecha_salida = $_POST['fecha_salida'];
 
-// Preparar la consulta SQL
-$sql = "INSERT INTO equipos (placa, tipo_de_maquina, quien_recoge_equipo, fecha_llegada, fecha_salida) 
+// Preparar la consulta SQL para la tabla nuevos
+$sql = "INSERT INTO nuevos (placa, tipo_de_maquina, quien_recoge_equipo, fecha_llegada, fecha_salida) 
         VALUES (?, ?, ?, ?, ?)";
 
 // Preparar statement
-$stmt = $conn->prepare($sql);
+$stmt = $conexion->prepare($sql);
 $stmt->bind_param("sssss", $placa, $tipo_de_maquina, $quien_recoge_equipo, $fecha_llegada, $fecha_salida);
 
 // Ejecutar la consulta
 if ($stmt->execute()) {
     echo "<script>
             alert('Equipo guardado exitosamente');
-            window.location.href = 'index.html';
+            window.location.href = 'index.php';
           </script>";
 } else {
     echo "Error al guardar: " . $stmt->error;
@@ -40,6 +35,6 @@ if ($stmt->execute()) {
 
 // Cerrar conexión
 $stmt->close();
-$conn->close();
+$conexion->close();
 ?>
     

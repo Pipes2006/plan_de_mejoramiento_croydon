@@ -1,3 +1,10 @@
+<?php
+session_start();
+if (!isset($_SESSION['username'])) {
+    header("Location: login.html");
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -9,7 +16,13 @@
 </head>
 <body>
   <div class="container mt-5">
-    <h2 class="mb-4">Clasificación de Computadores - Croydon</h2>
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h2>Clasificación de Computadores - Croydon</h2>
+      <div>
+        <span class="me-3">Bienvenido, <?php echo htmlspecialchars($_SESSION['username']); ?></span>
+        <a href="logout.php" class="btn btn-danger">Cerrar Sesión</a>
+      </div>
+    </div>
 
     <form action="guardar_equipo.php" method="POST">
       <div class="mb-3">
