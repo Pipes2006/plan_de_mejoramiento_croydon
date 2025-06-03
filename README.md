@@ -35,7 +35,7 @@ Desarrollar una página web profesional que permita clasificar computadores.
 - Diseñar la estructura HTML.
 - Aplicar estilos visuales y responsivos con CSS.
 - Implementar la lógica de clasificación en JavaScript.
-- Sugerir el uso de frameworks como Bootstrap o Vue.js.
+- Implementar el uso de frameworks como Bootstrap o Vue.js.
 
 ---
 
@@ -44,6 +44,6 @@ Desarrollar una página web profesional que permita clasificar computadores.
 - **HTML5:** Estructura del sitio web.
 - **CSS3:** Diseño visual y estilos responsivos.
 - **JavaScript (ES6+):** Lógica de clasificación.
-- **Framework sugerido:**  
+- **Framework:**  
   - [Bootstrap 5](https://getbootstrap.com): Para componentes visuales rápidos.  
-  - *(Opcional)* [Vue.js](https://vuejs.org): Para interfaces reactivas y dinámicas.
+  - [Vue.js](https://vuejs.org): Para interfaces reactivas y dinámicas.
